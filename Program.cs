@@ -1,111 +1,57 @@
-﻿using System.Runtime.InteropServices;
-using System.Security.Cryptography;
+﻿using System.Diagnostics.CodeAnalysis;
 
-class Program
+namespace HomeWork
 {
-
-    static void Main(string[] args)
+    internal class Program
     {
-        
-
-        if (!Int32.TryParse(Console.ReadLine(), out var a))                 // проверка на ввод числа
+        static void Main(string[] args)
         {
-            Console.WriteLine("Not a number!");
-            return;
+            int[] fibonacci = new[] { 0, 1, 1, 2, 3, 5, 8, 13 };                                                          // 1.Фибоначчи
+
+
+            string[] munth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }; // 2.Месяцы 
+
+
+            int[,] d2 = new int[3, 3] {
+                { 3, 3, 4 }, { 2, 3, 4 }, { 2, 3, 4 }                                                                     // 3.Двумерный массив
+            };
+            
+
+
+            double[][] array4 = new double[3][]; 
+            array4[0] = new double[] { 1, 2, 3, 4, 5 };                                                                   // 4.Ломанный массив
+            array4[1] = new double[] { Math.E, Math.PI };
+            array4[2] = new double[] {Math.Log(1, 10), Math.Log(10,10), Math.Log(100,10), Math.Log(1000, 10) };
+            ;
+
+
+            int[] array = new int[] { 0, 1, 2, 3, 4, 5 };
+            int[] array2 = new int[] { 7, 8, 9, 10, 11, 12, 13 };                                                         // 5. Копирование элементов из одгого в другой
+            Array.Copy(array, array2, 3);
+            Console.Write("");
+            foreach (int num in array2)
+            {
+                Console.WriteLine(num + " ");
+
+            }
+            Console.WriteLine();
+
+
+            //string[] sample = { " ", " " };
+            Array.Resize(ref array, array.Length + 5);                                                                    // 6. +5 Элементов в первом массиве
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.WriteLine("{0}", i, array[i]);
+            }
+
+
         }
-
-        if (!Int32.TryParse(Console.ReadLine(), out var b))                 // проверка на ввод числа 2
-        {
-            Console.WriteLine("Not a number!");
-            return;
-        }
-
-        var s = Console.ReadLine();
-        int result = 0;
-        string operation = "";
-
-        switch (s[0])
-        {
-            case '&':
-                result = a & b;
-                operation = "&";
-                Console.WriteLine($"Result of {a} {operation} {b} = {result}" );                  //операции
-                break;
-            case '|':
-                result = a | b;
-                operation = "|";
-                Console.WriteLine($"Result of {a} {operation} {b} = {result}");                
-                break;
-            case '^':
-                result = a ^ b;
-                operation = "^";
-                Console.WriteLine($"Result of {a} {operation} {b} = {result}");
-                break;
-            default:
-                Console.WriteLine("Wrong sign");                              // коректность оператора
-                break;
-
-        }
-
-
-        Console.WriteLine($"Десятичная система счисления: {result}");
-        Console.WriteLine($"Двоичная система счисления: {Convert.ToString(result, 2)}");                                // вывод разных счислений
-        Console.WriteLine($"Шестнадцатеричнаяч система счисления: {Convert.ToString(result, 16)}");
-
-
-
-
-
-
-
-
-        //    if (!Int32.TryParse(Console.ReadLine(), out var a))
-        //    {
-        //        Console.WriteLine("Not number!");
-        //        return;
-        //    }
-
-        //    if (!Int32.TryParse(Console.ReadLine(), out var b))
-        //    {
-        //        Console.WriteLine("Not number!");
-        //        return;
-        //    }
-        //    var s = Console.ReadLine();
-        //    var boolVar = true;
-        //    if (s.Length == 0 || s.Length > 1 && !boolVar) 
-        //    {
-        //        Console.WriteLine("Wrong sign");
-        //        return;
-        //    }
-        //    switch (s[0])
-        //    {
-        //        case '+':
-        //            Console.WriteLine("Result of {0} + {1} = {2} ", a, b, a + b);
-        //            break;
-        //        case '-':
-        //            Console.WriteLine("Result of {0} - {1} = {2} ", a, b, a - b);              //жалко было удалять
-        //            break;
-        //        case '*':
-        //            Console.WriteLine("Result of {0} * {1} = {2} ", a, b, a * b);
-        //            break;
-        //        case '/':
-        //            Console.WriteLine("Result of {0} / {1} = {2} ", a, b, a / b);
-        //            break;
-        //        case '%':
-        //            Console.WriteLine("Result of {0} % {1} = {2} ", a, b, a % b);
-        //            break;
-        //        default:
-        //            Console.WriteLine("Wrong sign");
-        //            break;
-
-        //    }
-
-
-
-
-
 
 
 
     }
+
+
+
+
 }

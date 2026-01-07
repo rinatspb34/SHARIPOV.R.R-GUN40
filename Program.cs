@@ -37,8 +37,7 @@ namespace HomeWork
 
             do
             {
-                Console.Write("Введите пароль: ");                                                                              // 4. Пароль 
-                Console.Write("Введите пароль: ");                                                                              
+                Console.Write("Введите пароль: ");                                                                              // 4. Парольы                                                                               
                 userInput = Console.ReadLine();
                 if (userInput != password)
                 {

@@ -6,52 +6,53 @@ namespace HomeWork
     {
         static void Main(string[] args)
         {
-            int[] fibonacci = new[] { 0, 1, 1, 2, 3, 5, 8, 13 };                                                          // 1.Фибоначчи
+            int[] fibonacci = new[] { 0, 1, 1, 2, 3, 5, 8, 13, 21, 34 };                                                      // 1. Фибоначчи
 
-
-            string[] munth = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }; // 2.Месяцы 
-
-
-            int[,] d2 = new int[3, 3] {
-                { 3, 3, 4 }, { 2, 3, 4 }, { 2, 3, 4 }                                                                     // 3.Двумерный массив
-            };
-            
-
-
-            double[][] array4 = new double[3][]; 
-            array4[0] = new double[] { 1, 2, 3, 4, 5 };                                                                   // 4.Ломанный массив
-            array4[1] = new double[] { Math.E, Math.PI };
-            array4[2] = new double[] {Math.Log(1, 10), Math.Log(10,10), Math.Log(100,10), Math.Log(1000, 10) };
-            ;
-
-
-            int[] array = new int[] { 0, 1, 2, 3, 4, 5 };
-            int[] array2 = new int[] { 7, 8, 9, 10, 11, 12, 13 };                                                         // 5. Копирование элементов из одгого в другой
-            Array.Copy(array, array2, 3);
-            Console.Write("");
-            foreach (int num in array2)
+            for (int i = 0; i < fibonacci.Length; i++) 
             {
-                Console.WriteLine(num + " ");
-
+                Console.WriteLine(fibonacci[i] + " ");
             }
             Console.WriteLine();
 
 
-            //string[] sample = { " ", " " };
-            Array.Resize(ref array, array.Length + 5);                                                                    // 6. +5 Элементов в первом массиве
-            for (int i = 0; i < array.Length; i++)
+            for (int i = 2;i <= 20; i += 2)                                                                                   // 2. Чётные числа
             {
-                Console.WriteLine("{0}", i, array[i]);
+                Console.Write(i + " ");
             }
+            Console.WriteLine();
+            Console.WriteLine(" ");
 
+            for (int i = 1; i <= 5; i++)                                                                                      // 3. Таблица умножения
+            {
+                for (int j = 1; j <= 5; j++)
+                {
+                    Console.Write($"{i,2} * {j,2} = {i * j,2}  ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine(" ");
 
+            string password = "qwerty";
+            string userInput;
+
+            do
+            {
+                Console.Write("Введите пароль: ");                                                                              // 4. Пароль 
+                Console.Write("Введите пароль: ");                                                                              
+                userInput = Console.ReadLine();
+                if (userInput != password)
+                {
+                    Console.WriteLine("Неверный пароль! Попробуйте снова.");
+                }
+            } while (userInput != password);
+            Console.WriteLine("Пароль верный");
         }
 
 
 
+
+
     }
-
-
 
 
 }

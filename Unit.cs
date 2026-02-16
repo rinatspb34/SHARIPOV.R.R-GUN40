@@ -46,7 +46,16 @@ namespace HomeWork
         }
 
 
-      
+        public override string ToString()
+        {
+            return $"{Name}(HP: {Health})";
+        }
+
     }
+
+
+
+
+
 }
 

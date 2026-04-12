@@ -13,16 +13,16 @@ namespace GamePrototype.Units
         {            
         }
 
-        public override uint GetUnitDamage()
+        public override uint GetUnitDamage()          
         {
             if (_equipment.TryGetValue(EquipSlot.Weapon, out var item))
             {
-                // Обычное оружие
+                                                   //обычное оружие
                 if (item is Weapon weapon)
                 {
                     return BaseDamage + weapon.Damage;
                 }
-                // НОВЫЙ КИНЖАЛ (ЗАДАЧА 3)
+                                                      // НОВЫЙ КИНЖАЛ 
                 else if (item is Dagger dagger)
                 {
                     return dagger.CalculateTotalDamage(BaseDamage);
@@ -48,20 +48,20 @@ namespace GamePrototype.Units
         {
             if (item is EquipItem equipItem)
             {
-                // Пытаемся экипировать. Если слот уже занят...
+                                                                                            //пытаемся экипировать. Если слот уже занят
                 if (!_equipment.TryAdd(equipItem.Slot, equipItem))
                 {
-                    // Находим старый предмет
+                                                                                                            //находим старый предмет
                     _equipment.TryGetValue(equipItem.Slot, out var oldItem);
 
                     Console.WriteLine($"Slot {equipItem.Slot} is occupied by {oldItem.Name}. Replace it with {equipItem.Name}? (y/n)");
                     var input = Console.ReadLine();
                     if (input?.ToLower() == "y")
                     {
-                        // ЗАДАЧА 4: ЗАМЕНА
+                        
                         _equipment.Remove(equipItem.Slot);
                         _equipment.Add(equipItem.Slot, equipItem);
-                        base.AddItemToInventory(oldItem); // Старый предмет в инвентарь
+                        base.AddItemToInventory(oldItem);          //старый предмет в инвентарь
                         Console.WriteLine($"{equipItem.Name} equipped. {oldItem.Name} moved to inventory.");
                         return;
                     }
@@ -72,18 +72,18 @@ namespace GamePrototype.Units
                 }
                 else
                 {
-                    // Слот был свободен
+                                                                              //слот был свободен
                     Console.WriteLine($"{equipItem.Name} equipped!");
                     return;
                 }
             }
-            // Если предмет не экипировка или замену отменили, кладём в инвентарь
+                                                                                 //если предмет не экипировка или замену отменили, кладём в инвентарь
             base.AddItemToInventory(item);
         }
 
         private void UseEconomicItem(EconomicItem economicItem)
         {
-            // Лечение зельем (было)
+                                                                                                 //лечение зельем 
             if (economicItem is HealthPotion healthPotion)
             {
                 Health += healthPotion.HealthRestore;
@@ -91,14 +91,13 @@ namespace GamePrototype.Units
                 Console.WriteLine($"Used {healthPotion.Name}, restored health to {Health}");
             }
 
-            // ЗАДАЧА 2: ТОЧИЛЬНЫЙ КАМЕНЬ (новый код)
+                                                                                                                       // ТОЧИЛЬНЫЙ КАМЕНЬ 
             if (economicItem is Grindstone grindstone)
             {
-                // Ищем экипированное оружие
+                                                                                                                                          
                 if (_equipment.TryGetValue(EquipSlot.Weapon, out var weapon) && weapon is EquipItem equipWeapon)
                 {
-                    uint repairAmount = 20; // Можно вынести в константу
-                    equipWeapon.Repair(repairAmount);
+                    uint repairAmount = 20;                                                             
                     Console.WriteLine($"Used {grindstone.Name} on {equipWeapon.Name}. Durability restored by {repairAmount}. Current durability: {equipWeapon.Durability}");
                 }
                 else
@@ -112,14 +111,14 @@ namespace GamePrototype.Units
         {
             if (_equipment.TryGetValue(EquipSlot.Armour, out var item) && item is Armour armour)
             {
-                // Рассчитываем урон с защитой
+                                                                                                      //рассчитываем урон с защитой
                 uint reducedDamage = damage - (uint)(damage * (armour.Defence / 100f));
 
-                // Уменьшаем прочность брони на 1 (ЗАДАЧА 1)
+                                                                                                                        //уменьшаем прочность брони на 1
                 armour.ReduceDurability(1);
                 Console.WriteLine($"{Name}: {armour.Name} durability is now {armour.Durability}");
 
-                // Если броня сломалась, снимаем её
+                                                                                                     //если броня сломалась, снимаем её
                 if (armour.Durability == 0)
                 {
                     Console.WriteLine($"{Name}: {armour.Name} is broken and unequipped!");

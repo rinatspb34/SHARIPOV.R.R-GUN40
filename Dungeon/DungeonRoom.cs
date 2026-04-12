@@ -3,13 +3,13 @@ using GamePrototype.Units;
 
 namespace GamePrototype.Dungeon
 {
-    public sealed class DungeonRoom                                  //комната подземелья
+    public sealed class DungeonRoom                                           //комната подземелья
     {      
         public readonly string Name;
         public readonly Unit Enemy;
         public readonly Item Loot;
         public readonly Dictionary<Direction, DungeonRoom> Rooms = new();                           //словарь<направление, комнатаПодземелья> Комнаты = новый()
-        public bool IsFinal => Rooms.Count == 0;  //финал если комнат нету
+        public bool IsFinal => Rooms.Count == 0;            //финал если комнат нету
 
         public DungeonRoom(string name) => Name = name;                   //ПУСТАЯ КОМНАТА
 

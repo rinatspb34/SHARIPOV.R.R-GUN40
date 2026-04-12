@@ -4,7 +4,7 @@
 
 namespace GamePrototype.Items.EquipItems
 {
-    public sealed class Dagger : EquipItem
+    public sealed class Dagger : EquipItem          
     {
         public uint Damage { get; }
         private readonly double _doubleStrikeChance = 0.3; 
@@ -15,14 +15,14 @@ namespace GamePrototype.Items.EquipItems
         }
 
         
-        public uint CalculateTotalDamage(uint baseDamage)
+        public uint CalculateTotalDamage(uint baseDamage)         //вычислить общий урон
         {
             uint totalDamage = baseDamage + Damage;
 
             Random random = new Random();
             if (random.NextDouble() <= _doubleStrikeChance)
             {
-                Console.WriteLine($"*** {Name} наносит двойной удар! ***");
+                Console.WriteLine($" {Name} Double strike");
                 totalDamage += (baseDamage + Damage);
             }
             return totalDamage;

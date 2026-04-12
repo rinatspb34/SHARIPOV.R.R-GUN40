@@ -46,7 +46,7 @@ namespace GamePrototype.Game
                 {
                     if (Enum.TryParse<Direction>(Console.ReadLine(), out var direction) ) 
                     {
-                        currentRoom = currentRoom.Rooms[direction];                                 //
+                        currentRoom = currentRoom.Rooms[direction];                                 //ошибка если пойти на -1
                         break;
                     }
                     else 
